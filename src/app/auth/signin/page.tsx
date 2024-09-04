@@ -1,6 +1,7 @@
 "use client";
 
 import { Box, Button, Typography } from "@mui/material";
+import { signIn } from "next-auth/react";
 
 export default function signInPage() {
   return (
@@ -16,7 +17,14 @@ export default function signInPage() {
         alignItems: "center",
       }}
     >
-      <Box sx={{ maxWidth: "400px", height: "auto", textAlign: "center" }}>
+      <Box
+        sx={{
+          maxWidth: "430px",
+          height: "auto",
+          textAlign: "center",
+          color: "#023047",
+        }}
+      >
         <Typography variant="h2">Welcome Back!</Typography>
         <span style={{ textAlign: "center" }}>
           Sign in to your page to access your backoffice and manange your menus
@@ -30,9 +38,7 @@ export default function signInPage() {
           mt: 3,
           ":hover": { bgcolor: "#8ecae6", color: "#023047" },
         }}
-
-        /*         onClick={}
-         */
+        onClick={() => signIn("google", { callbackUrl: "/backoffice" })}
       >
         Sign In With Google
       </Button>
